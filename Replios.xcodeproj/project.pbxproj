@@ -13,6 +13,9 @@
 		0E91F15527B2CBE400283CD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E91F15327B2CBE400283CD4 /* Main.storyboard */; };
 		0E91F15727B2CBE600283CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E91F15627B2CBE600283CD4 /* Assets.xcassets */; };
 		0E91F15A27B2CBE600283CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E91F15827B2CBE600283CD4 /* LaunchScreen.storyboard */; };
+		0EE9F49427B2DA5800710AB3 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9F49327B2DA5800710AB3 /* Evaluator.swift */; };
+		0EE9F49627B2DFBD00710AB3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9F49527B2DFBD00710AB3 /* AppState.swift */; };
+		8852192EFAB3D8D29BBFFC13 /* Pods_Replios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAF3CD3A54CACD3A24CE80D /* Pods_Replios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		0E91F15627B2CBE600283CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E91F15927B2CBE600283CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E91F15B27B2CBE600283CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EE9F49327B2DA5800710AB3 /* Evaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
+		0EE9F49527B2DFBD00710AB3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		6EE3DB004B719CCDFE3BFF27 /* Pods-Replios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Replios.debug.xcconfig"; path = "Target Support Files/Pods-Replios/Pods-Replios.debug.xcconfig"; sourceTree = "<group>"; };
+		CCAF3CD3A54CACD3A24CE80D /* Pods_Replios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Replios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB353EA3E02A203A957EFAD9 /* Pods-Replios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Replios.release.xcconfig"; path = "Target Support Files/Pods-Replios/Pods-Replios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8852192EFAB3D8D29BBFFC13 /* Pods_Replios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				0E91F14C27B2CBE400283CD4 /* Replios */,
 				0E91F14B27B2CBE400283CD4 /* Products */,
+				80552F026786E1255A3CAD76 /* Pods */,
+				C7B1B632F4CBC6787D48E7CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +70,31 @@
 				0E91F14D27B2CBE400283CD4 /* AppDelegate.swift */,
 				0E91F14F27B2CBE400283CD4 /* SceneDelegate.swift */,
 				0E91F15127B2CBE400283CD4 /* ViewController.swift */,
+				0EE9F49527B2DFBD00710AB3 /* AppState.swift */,
+				0EE9F49327B2DA5800710AB3 /* Evaluator.swift */,
 				0E91F15327B2CBE400283CD4 /* Main.storyboard */,
 				0E91F15627B2CBE600283CD4 /* Assets.xcassets */,
 				0E91F15827B2CBE600283CD4 /* LaunchScreen.storyboard */,
 				0E91F15B27B2CBE600283CD4 /* Info.plist */,
 			);
 			path = Replios;
+			sourceTree = "<group>";
+		};
+		80552F026786E1255A3CAD76 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EE3DB004B719CCDFE3BFF27 /* Pods-Replios.debug.xcconfig */,
+				FB353EA3E02A203A957EFAD9 /* Pods-Replios.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C7B1B632F4CBC6787D48E7CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF3CD3A54CACD3A24CE80D /* Pods_Replios.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E91F15E27B2CBE600283CD4 /* Build configuration list for PBXNativeTarget "Replios" */;
 			buildPhases = (
+				6BE3660BD60042A2852422A9 /* [CP] Check Pods Manifest.lock */,
 				0E91F14627B2CBE400283CD4 /* Sources */,
 				0E91F14727B2CBE400283CD4 /* Frameworks */,
 				0E91F14827B2CBE400283CD4 /* Resources */,
+				B72ABAD05A830042805B2130 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,12 +165,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6BE3660BD60042A2852422A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Replios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B72ABAD05A830042805B2130 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Replios/Pods-Replios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Replios/Pods-Replios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Replios/Pods-Replios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E91F14627B2CBE400283CD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0E91F15227B2CBE400283CD4 /* ViewController.swift in Sources */,
+				0EE9F49627B2DFBD00710AB3 /* AppState.swift in Sources */,
+				0EE9F49427B2DA5800710AB3 /* Evaluator.swift in Sources */,
 				0E91F14E27B2CBE400283CD4 /* AppDelegate.swift in Sources */,
 				0E91F15027B2CBE400283CD4 /* SceneDelegate.swift in Sources */,
 			);
@@ -284,6 +360,7 @@
 		};
 		0E91F15F27B2CBE600283CD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EE3DB004B719CCDFE3BFF27 /* Pods-Replios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +389,7 @@
 		};
 		0E91F16027B2CBE600283CD4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB353EA3E02A203A957EFAD9 /* Pods-Replios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
