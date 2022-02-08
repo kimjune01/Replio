@@ -24,11 +24,13 @@ class Evaluator {
       oldValue?.cancel()
     }
   }
-  
+  static var isRequesting: Bool {
+    return request != nil
+  }
   static func evaluate(_ command: String, _ completion: @escaping (String?)->()) {
     let params = RequestParams(command: command)
     request = AF.request(endpointUrl, method: .put, parameters: params, encoder: .json) { request in
-      request.timeoutInterval = 2
+      request.timeoutInterval = 5
     }.responseDecodable(of: ResponseParams.self) { response in
       switch response.result {
       case .failure(let e):
@@ -37,6 +39,7 @@ class Evaluator {
       case .success(let jsonResponse):
         completion(jsonResponse.result)
       }
+      self.request = nil
     }
   }
 }

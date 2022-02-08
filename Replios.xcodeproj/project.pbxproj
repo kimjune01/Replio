@@ -14,7 +14,8 @@
 		0E91F15727B2CBE600283CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E91F15627B2CBE600283CD4 /* Assets.xcassets */; };
 		0E91F15A27B2CBE600283CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E91F15827B2CBE600283CD4 /* LaunchScreen.storyboard */; };
 		0EE9F49427B2DA5800710AB3 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9F49327B2DA5800710AB3 /* Evaluator.swift */; };
-		0EE9F49627B2DFBD00710AB3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9F49527B2DFBD00710AB3 /* AppState.swift */; };
+		0EE9F49827B3167D00710AB3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9F49727B3167D00710AB3 /* ResultViewController.swift */; };
+		0EE9F49A27B31CAD00710AB3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9F49927B31CAD00710AB3 /* WelcomeViewController.swift */; };
 		8852192EFAB3D8D29BBFFC13 /* Pods_Replios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAF3CD3A54CACD3A24CE80D /* Pods_Replios.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +29,8 @@
 		0E91F15927B2CBE600283CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E91F15B27B2CBE600283CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EE9F49327B2DA5800710AB3 /* Evaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
-		0EE9F49527B2DFBD00710AB3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		0EE9F49727B3167D00710AB3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		0EE9F49927B31CAD00710AB3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		6EE3DB004B719CCDFE3BFF27 /* Pods-Replios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Replios.debug.xcconfig"; path = "Target Support Files/Pods-Replios/Pods-Replios.debug.xcconfig"; sourceTree = "<group>"; };
 		CCAF3CD3A54CACD3A24CE80D /* Pods_Replios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Replios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB353EA3E02A203A957EFAD9 /* Pods-Replios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Replios.release.xcconfig"; path = "Target Support Files/Pods-Replios/Pods-Replios.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +72,8 @@
 				0E91F14D27B2CBE400283CD4 /* AppDelegate.swift */,
 				0E91F14F27B2CBE400283CD4 /* SceneDelegate.swift */,
 				0E91F15127B2CBE400283CD4 /* ViewController.swift */,
-				0EE9F49527B2DFBD00710AB3 /* AppState.swift */,
+				0EE9F49727B3167D00710AB3 /* ResultViewController.swift */,
+				0EE9F49927B31CAD00710AB3 /* WelcomeViewController.swift */,
 				0EE9F49327B2DA5800710AB3 /* Evaluator.swift */,
 				0E91F15327B2CBE400283CD4 /* Main.storyboard */,
 				0E91F15627B2CBE600283CD4 /* Assets.xcassets */,
@@ -213,10 +216,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E91F15227B2CBE400283CD4 /* ViewController.swift in Sources */,
-				0EE9F49627B2DFBD00710AB3 /* AppState.swift in Sources */,
 				0EE9F49427B2DA5800710AB3 /* Evaluator.swift in Sources */,
 				0E91F14E27B2CBE400283CD4 /* AppDelegate.swift in Sources */,
 				0E91F15027B2CBE400283CD4 /* SceneDelegate.swift in Sources */,
+				0EE9F49827B3167D00710AB3 /* ResultViewController.swift in Sources */,
+				0EE9F49A27B31CAD00710AB3 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +376,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,7 +388,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -401,6 +406,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -412,7 +418,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
