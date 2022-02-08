@@ -17,7 +17,8 @@ class ViewController: UIViewController {
                         green: 16.0 / 256,
                         blue: 21.0 / 256,
                         alpha: 1)
-
+  
+  let addendumScroller = UIScrollView()
   var addendumHeightConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
@@ -71,13 +72,14 @@ class ViewController: UIViewController {
     controlsRow.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     controlsRow.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     controlsRow.topAnchor.constraint(equalTo: codeTextView.bottomAnchor).isActive = true
-    controlsRow.heightAnchor.constraint(equalToConstant: 58).isActive = true
+    controlsRow.heightAnchor.constraint(equalToConstant: 46).isActive = true
     
     controlsRow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedControlsRow)))
     
     var runButtonConfig = UIButton.Configuration.filled()
     runButtonConfig.cornerStyle = UIButton.Configuration.CornerStyle.small
     runButtonConfig.baseBackgroundColor = .systemGreen
+    runButtonConfig.buttonSize = .small
     let runButton = UIButton(configuration: runButtonConfig, primaryAction: UIAction(handler: { action in
       self.evaluate()
     }))
@@ -91,6 +93,7 @@ class ViewController: UIViewController {
     var copyButtonConfig = UIButton.Configuration.filled()
     copyButtonConfig.cornerStyle = UIButton.Configuration.CornerStyle.small
     copyButtonConfig.baseBackgroundColor = .systemOrange
+    copyButtonConfig.buttonSize = .small
     let copyButton = UIButton(configuration: copyButtonConfig, primaryAction: UIAction(handler: { action in
       guard self.codeTextView.text.count > 0 else { return }
       UIPasteboard.general.string = self.codeTextView.text
@@ -114,27 +117,36 @@ class ViewController: UIViewController {
   }
   
   func addKeyboardAddendum() {
+    view.addSubview(addendumScroller)
+    addendumScroller.translatesAutoresizingMaskIntoConstraints = false
+    addendumScroller.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    addendumScroller.topAnchor.constraint(equalTo: controlsRow.bottomAnchor).isActive = true
+    addendumScroller.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
+    addendumScroller.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    addendumHeightConstraint = addendumScroller.heightAnchor.constraint(equalToConstant: 0)
+    addendumHeightConstraint.isActive = true
+    
     let keyboardAddendumRow = UIStackView()
-    view.addSubview(keyboardAddendumRow)
+    addendumScroller.addSubview(keyboardAddendumRow)
     keyboardAddendumRow.axis = .horizontal
     keyboardAddendumRow.alignment = .center
     keyboardAddendumRow.distribution = .fillEqually
     keyboardAddendumRow.spacing = 12
     
     keyboardAddendumRow.translatesAutoresizingMaskIntoConstraints = false
-    keyboardAddendumRow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    keyboardAddendumRow.topAnchor.constraint(equalTo: controlsRow.bottomAnchor).isActive = true
-    keyboardAddendumRow.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
-    addendumHeightConstraint = keyboardAddendumRow.heightAnchor.constraint(equalToConstant: 0)
-    addendumHeightConstraint.isActive = true
+    keyboardAddendumRow.widthAnchor.constraint(greaterThanOrEqualTo: addendumScroller.widthAnchor).isActive = true
+    keyboardAddendumRow.heightAnchor.constraint(equalTo: addendumScroller.heightAnchor).isActive = true
+    keyboardAddendumRow.leadingAnchor.constraint(equalTo: addendumScroller.leadingAnchor, constant: 12).isActive = true
     
-    
-    keyboardAddendumRow.addArrangedSubview(makeCharButton("("))
-    keyboardAddendumRow.addArrangedSubview(makeCharButton(")"))
+    keyboardAddendumRow.addArrangedSubview(makeCharButton("()"))
+    keyboardAddendumRow.addArrangedSubview(makeCharButton("(}"))
+    keyboardAddendumRow.addArrangedSubview(makeCharButton("[]"))
     keyboardAddendumRow.addArrangedSubview(makeCharButton("="))
     keyboardAddendumRow.addArrangedSubview(makeCharButton(":"))
     keyboardAddendumRow.addArrangedSubview(makeCharButton("\""))
-    keyboardAddendumRow.addArrangedSubview(makeCharButton("+"))
+    keyboardAddendumRow.addArrangedSubview(makeCharButton(","))
+    keyboardAddendumRow.addArrangedSubview(makeCharButton("#"))
+    
   }
   
   func append(char: String) {
@@ -142,6 +154,12 @@ class ViewController: UIViewController {
       return
     }
     codeTextView.text = codeTextView.text + char
+    if char.count == 2 {
+      if let selectedRange = codeTextView.selectedTextRange,
+         let newPosition = codeTextView.position(from: selectedRange.start, offset: -1) {
+        codeTextView.selectedTextRange = codeTextView.textRange(from: newPosition, to: newPosition)
+      }
+    }
   }
   
   func makeCharButton(_ char: String) -> UIButton {
@@ -151,8 +169,10 @@ class ViewController: UIViewController {
     let charButton = UIButton(configuration: charButtonConfig, primaryAction: UIAction(handler: { action in
       self.append(char:char)
     }))
+    let font = UIFont.monospacedSystemFont(ofSize: 14, weight: .medium)
+    let attribString = NSAttributedString(string: char, attributes: [NSAttributedString.Key.font: font])
+    charButton.setAttributedTitle(attribString, for: .normal)
     
-    charButton.setTitle(char, for: .normal)
     return charButton
     
   }
@@ -172,7 +192,11 @@ class ViewController: UIViewController {
   }
   
   func showCopyToast() {
-    let toast = UIAlertController(title: nil, message: "Copied to clipboard", preferredStyle: .alert)
+    showToast("Copied to clipboard")
+  }
+  
+  func showToast(_ text: String) {
+    let toast = UIAlertController(title: nil, message: text, preferredStyle: .alert)
     present(toast, animated: true) {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
         toast.dismiss(animated: true, completion: nil)
@@ -189,7 +213,7 @@ class ViewController: UIViewController {
       }
       self.spinner.stopAnimating()
       guard let result = result else {
-        print("should show error to user")
+        self.showToast("Server error. Please try again in a few seconds.")
         return
       }
       DispatchQueue.main.async {
@@ -209,16 +233,17 @@ class ViewController: UIViewController {
   }
   
   func maybeShowWelcome() {
-    defer {
-      UserDefaults.standard.set(true, forKey: "Welcome")
-    }
-//    guard !UserDefaults.standard.bool(forKey: "Welcome") else {
-//      return
-//    }
     let welcomeVC = WelcomeViewController()
     welcomeVC.modalPresentationStyle = .formSheet
     present(welcomeVC, animated: true, completion: nil)
     
+  }
+  
+  override func viewDidLayoutSubviews() {
+    let contentRect: CGRect = addendumScroller.subviews.reduce(into: .zero) { rect, view in
+      rect = rect.union(view.frame)
+    }
+    addendumScroller.contentSize = CGSize(width: contentRect.width, height: 39)
   }
 }
 

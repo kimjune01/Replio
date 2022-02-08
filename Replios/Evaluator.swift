@@ -34,7 +34,6 @@ class Evaluator {
     }.responseDecodable(of: ResponseParams.self) { response in
       switch response.result {
       case .failure(let e):
-        assert(false, "error: \(e.localizedDescription)")
         completion(nil)
       case .success(let jsonResponse):
         completion(jsonResponse.result)
